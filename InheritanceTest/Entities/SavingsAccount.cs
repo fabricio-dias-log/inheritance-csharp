@@ -1,6 +1,6 @@
 ﻿namespace InheritanceTest.Entities;
 
-public class SavingsAccount : Account
+public sealed class SavingsAccount : Account
 {
     public double InterestRate { get; set; }
 
@@ -14,8 +14,8 @@ public class SavingsAccount : Account
         InterestRate = interestRate;
     }
 
-    public override void Withdraw(double amount)
-    {
+    public sealed override void Withdraw(double amount) // sealed para selar metodos, só funciona se tiver override
+    { // funciona para que nao seja reescrita novamente em outra classe
         base.Withdraw(amount);
         Balance -= 2.00;
     }
