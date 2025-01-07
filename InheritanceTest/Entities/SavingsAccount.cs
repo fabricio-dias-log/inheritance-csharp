@@ -14,6 +14,12 @@ public class SavingsAccount : Account
         InterestRate = interestRate;
     }
 
+    public override void Withdraw(double amount)
+    {
+        base.Withdraw(amount);
+        Balance -= 2.00;
+    }
+
     public void UpdateBalance()
     {
         Balance += Balance * InterestRate;

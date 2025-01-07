@@ -41,5 +41,14 @@ class Program
             account4.UpdateBalance();
             Console.WriteLine("Balance Updated");
         }
+        
+        Account normalAccount = new Account(1001, "Alex", 500);
+        Account normalAccount2 = new SavingsAccount(1002, "Ana", 500, 0.01);
+        
+        normalAccount.Withdraw(10.00);
+        normalAccount2.Withdraw(10.00);
+
+        Console.WriteLine(normalAccount.Balance);
+        Console.WriteLine(normalAccount2.Balance);
     }
 }
