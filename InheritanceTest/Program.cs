@@ -1,4 +1,5 @@
-﻿using InheritanceTest.Entities;
+﻿using System.Globalization;
+using InheritanceTest.Entities;
 
 namespace InheritanceTest;
 
@@ -6,7 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        BusinessAccount bAccount = new BusinessAccount(8010, "Bob Brown", 100.00, 500.00);
+        /*BusinessAccount bAccount = new BusinessAccount(8010, "Bob Brown", 100.00, 500.00);
 
         Console.WriteLine(bAccount.Balance);
         // bAccount.Balance = 100.00; dá erro por Balance ser protected e acessivel apenas pela subclasse
@@ -49,6 +50,32 @@ class Program
         normalAccount2.Withdraw(10.00);
 
         Console.WriteLine(normalAccount.Balance);
-        Console.WriteLine(normalAccount2.Balance);
+        Console.WriteLine(normalAccount2.Balance);*/
+
+        List<Account> accounts = new List<Account>();
+        
+        accounts.Add(new SavingsAccount(1001, "Alex", 500.00, 0.01));
+        accounts.Add(new BusinessAccount(1002, "Maria", 500.00, 400.00));
+        accounts.Add(new SavingsAccount(1003, "Bob", 500.00, 0.01));
+        accounts.Add(new BusinessAccount(1004, "Ana", 500.00, 500.00));
+
+        double sum = 0;
+
+        foreach (Account acc in accounts)
+        {
+            sum += acc.Balance;
+        }
+
+        Console.WriteLine($"Total balance: {sum.ToString("F2", CultureInfo.InvariantCulture)}");
+
+        foreach (Account acc in accounts)
+        {
+            acc.Withdraw(10);
+        }
+
+        foreach (var acc in accounts)
+        {
+            Console.WriteLine($"Updated Balance for account {acc.Number}: {acc.Balance.ToString("F2", CultureInfo.InvariantCulture)}");
+        }
     }
 }

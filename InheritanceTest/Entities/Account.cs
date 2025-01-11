@@ -1,6 +1,6 @@
 ﻿namespace InheritanceTest.Entities;
 
-public class Account
+public abstract class Account
 {
     public int Number { get; protected set; }
     public string Holder { get; protected set; }
